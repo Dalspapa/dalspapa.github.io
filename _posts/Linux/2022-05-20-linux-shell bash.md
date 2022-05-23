@@ -177,7 +177,8 @@ exit
 
 <br/>
 
-**알리아싱 적용시키기**
+### 알리아싱 적용시키기
+---
 
 `vi .bashrc` 에디터 접근
 
@@ -205,7 +206,8 @@ alias pt='ping -ping c3 8.8.8.8'
 
 <br/>
 
-**`.` 생략하고 파일 읽기**
+### `.` 생략하고 파일 읽기
+---
 
 > `vi .bash_profile`
 
@@ -240,6 +242,93 @@ TEST  a.out  aa  b  bb  bbb  dd  ddd  down  p  s  t.c
 [j@localhost ~]$
 
 ```
+
+<br/>
+
+### PS1 / PS2 환경변수
+---
+***PS** : Prompt Status*
+- PS1 : 주 프롬프트
+- PS2 : 보조 프롬프트
+
+<br/>
+
+**PS2 예제**
+```
+[j@localhost ~]$ echo "abcdefg
+> h
+> i
+> j
+> k
+> "
+abcdefg
+h
+i
+j
+k
+
+[j@localhost ~]$
+```
+
+> `"abcd` 
+> > 쿼테이션을 닫지 않을 경우 실행 됨.
+> > 
+> >  `"` 쿼테이션을 닫아서 PS2를 종료시킴
+
+<br/>
+
+**PS1 예제**
+```
+[j@localhost ~]$ echo $PS1
+[\u@\h \w]\$
+[j@localhost ~]$ PS1='[\!] [\d : \t] [\w] \$ '
+[392] [월  5월 23 : 16:54:40] [~] $ who
+j        pts/0        2022-05-23 15:53 (gateway)
+[393] [월  5월 23 : 16:54:52] [~] $ date
+2022. 05. 23. (월) 16:55:11 KST
+[394] [월  5월 23 : 16:55:11] [~] $
+```
+
+> `[\!]` 
+> > 명령어 번호를 붙혀줌
+> 
+> `[\d : \t]`
+> > 날짜와 시간을 보여줌
+> 
+> `[\w]`
+> > 현재 내 위치 알려줌 
+
+*명령프롬프트 변경 가능*
+
+<br/>
+
+**상시 적용**
+
+`vi .bash_profile` 접속
+
+```
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific enviroment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:.
+
+NAME="이은사"
+AGE=31
+
+PS1='[\!][\w] [ Hi ] \$'
+
+export PATH
+```
+
+`:wq` 저장
+
+`. ~/.bash_profile` 초기화 해주면 적용.
 
 <br/>
 <br/>
