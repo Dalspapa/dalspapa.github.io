@@ -56,7 +56,7 @@ DELETE /movies ▶ 목록으로부터 삭제
 <br/>
 <br/>
 
-## REST의 구체적인 개념
+## REST API의 구체적인 개념
 ---
 
 ▶ *HTTP uri로 자원을 명시하며, HTTP의 메서드를 활용하여 해당 자원에 대한 CRUD처리 적용*
